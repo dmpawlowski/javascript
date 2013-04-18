@@ -14,8 +14,8 @@ function sayHello(name, options){
 function sayHello5(name, options){
   var name = name;
   var greeting;
-  if (options != undefined && options["language"] == "es"){
-    greeting = "Hola";
+  if (options != undefined){
+    greeting = languageCode(options["language"]);
   }
   else{
     greeting = "Hello";
@@ -27,19 +27,14 @@ function sayHello5(name, options){
 function sayHello6(name, options){
   var name = name;
   var greeting;
-  var emotion;
-  if (options == undefined){
-    emotion = "!"
-  }
-  else if (options["emotion"] == "sheepishly"){
-    emotion = "?";
-  }
-  else if (options["emotion"] == "normally"){
-    emotion = ".";
+  var punctuation;
+  if (options != undefined && options["emotion"] != undefined){
+    punctuation = emotionCode(options["emotion"]);
   }
   else {
-    emotion = "!";
+    punctuation = "!";
   }
+
   if (options == undefined){
     greeting = "Hello"
   }
@@ -49,8 +44,38 @@ function sayHello6(name, options){
   else {
     greeting = options["greeting"];
   }
-  console.log(greeting + " " + name + emotion);
+  console.log(greeting + " " + name + punctuation);
 }
+
+
+function languageCode(language){
+  var language = language;
+  var greeting;
+  if (language == "es"){
+    greeting = "Hola"
+  }
+  else{
+    greeting = "Hello"
+  }
+  return greeting;
+}
+
+
+function emotionCode(emotion){
+  var emotion = emotion;
+  var punctuation;
+  if (emotion == "sheepishly"){
+    punctuation = "?";
+  }
+  else if (emotion == "normally"){
+    punctuation = ".";
+  }
+  else {
+    punctuation = "!";
+  }
+  return punctuation;
+}
+
 
 //sayHello("Don", "Hi");
 //sayHello("Joe", "Hello");
