@@ -1,15 +1,15 @@
 //create class
-function Greeter(){
-  Greeter.prototype.greet = function(){
+function Greeter1(){
+  Greeter1.prototype.greet = function(){
     console.log("Hello World!");
   }
 }
 
 
 
-var greeter = new Greeter(); //constructor
+var greeter1 = new Greeter1(); //constructor
 //check to see if class is built properly
-if (greeter.__proto__ === Greeter.prototype){
+if (greeter1.__proto__ === Greeter1.prototype){
   console.log("Hooray");
 }
-greeter.greet();
+greeter1.greet();
