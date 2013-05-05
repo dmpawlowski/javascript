@@ -9,11 +9,10 @@ Greeter1.prototype.greet = function(){
 
 
 function Greeter2(name){
-  this.name = name;
-  console.log(this.name);
 }
-Greeter2.prototype.greet = function(){
-  console.log("Hello " + this.name + "!");
+Greeter2.prototype.greet = function(name){
+  this.name = name
+  console.log("Hello " + name + "!");
 }
 
 
@@ -29,5 +28,6 @@ if (greeter1.__proto__ === Greeter1.prototype){
 greeter1.greet();
 
 
-var greeter2 = new Greeter2(); //constructor
+var greeter2 = new Greeter2();
 greeter2.greet("Don");
+greeter2.greet("Joe");
