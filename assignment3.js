@@ -47,3 +47,14 @@ greeter3.setGreeting("Hi");
 greeter3.greet("Don");
 greeter3.setGreeting("Hello");
 greeter3.greet("Joe");
+
+console.log("******");
+
+//var greeter4 = new Greeter4();
+
+var greeter5 = new Greeter5();
+greeter5.greet("Don");
+greeter5.setLanguage("en");
+greeter5.greet("Jose");
+greeter5.greet("Josh");
+
