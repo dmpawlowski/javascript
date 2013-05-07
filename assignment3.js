@@ -27,6 +27,35 @@ Greeter3.prototype.setGreeting = function(greeting){
 }
 
 
+function Greeter4(){
+}
+Greeter4.prototype.setLanguage = function(lang){
+  this.greeting = "Hola";
+}
+Greeter4.prototype.setGreeting = function(greeting){
+  this.greeting = greeting;
+}
+Greeter4.prototype.greet = function(name){
+  this.name = name;
+  greeter4.print();
+}
+Greeter4.prototype.greetSheepishly = function(name){
+  this.name = name;
+  this.punc = "?";
+  greeter4.print();
+}
+Greeter4.prototype.greetExcitedly = function(name){
+  this.name = name;
+  this.punc = "!";
+  greeter4.print();
+}
+Greeter4.prototype.print = function(){
+  console.log(this.greeting + " " + this.name + this.punc);  
+  this.punc = ".";
+  this.greeting = "Hello";
+}
+
+
 var greeter1 = new Greeter1(); //constructor
 //check to see if class is built properly
 if (greeter1.__proto__ === Greeter1.prototype){
@@ -50,11 +79,13 @@ greeter3.greet("Joe");
 
 console.log("******");
 
-//var greeter4 = new Greeter4();
-
-var greeter5 = new Greeter5();
-greeter5.greet("Don");
-greeter5.setLanguage("en");
-greeter5.greet("Jose");
-greeter5.greet("Josh");
-
+var greeter4 = new Greeter4();
+greeter4.setGreeting("Hi");
+greeter4.greetSheepishly("Don");
+greeter4.greet("Joe");
+greeter4.setGreeting("Yo");
+greeter4.greetExcitedly("Josh");
+greeter4.setGreeting("Hello");
+greeter4.greet("Kevin");
+greeter4.setLanguage("es");
+greeter4.greetExcitedly("Jose");
