@@ -1,0 +1,12 @@
+p {
+  display: inline;
+  color: black;
+}
+
+li {
+  list-style-type: none;
+}
+
+.grayout {
+  color: red;
+}
