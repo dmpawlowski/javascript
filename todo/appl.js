@@ -26,11 +26,10 @@ function Checkbox(){
     if (cb.checked == true){
       console.log('yay');
       var task = document.getElementsByTagName('p');
-      task.className = "grayout";
+      task[0].className = "grayout";
     }
   });
   }
-  
 }
 
 AddToDo();
