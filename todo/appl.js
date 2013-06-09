@@ -25,7 +25,8 @@ function Checkbox(){
   cb.addEventListener('click', function(){
     if (cb.checked == true){
       console.log('yay');
-      var p = document.getElementsByTagName('p').className = "grayout";
+      var task = document.getElementsByTagName('p');
+      task.className = "grayout";
     }
   });
   }
