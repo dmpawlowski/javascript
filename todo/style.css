@@ -8,5 +8,6 @@ li {
 }
 
 .grayout {
-  color: red;
+  color: gray;
+  text-decoration: line-through;
 }
