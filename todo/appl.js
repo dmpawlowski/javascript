@@ -9,7 +9,7 @@ function CreateToDo(){
   var p = document.createElement('p');
   var checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
-  checkbox.id = 'checkbox';
+  checkbox.className = 'checkbox';
   var content = document.createTextNode(input[0].value);
   li.appendChild(checkbox);
   li.appendChild(p);
@@ -20,16 +20,25 @@ function CreateToDo(){
 }
 
 function Checkbox(){
-  var cb = document.getElementById('checkbox');
-  if (cb){
-  cb.addEventListener('click', function(){
-    if (cb.checked == true){
-      console.log('yay');
-      var task = document.getElementsByTagName('p');
-      task[0].className = "grayout";
-    }
-  });
+  var cb = document.getElementsByClassName('checkbox');
+  console.log("cb lenght = " + cb.length);
+  for (i = 1; i <= cb.length; i ++){
+    console.log("i = " + i);
+    cb[i-1].addEventListener('click', CompleteToDo);
   }
 }
+
+function CompleteToDo(e){
+  var cb = e.target;
+  var node = cb.parentNode;
+  console.log('parent' + node);
+  var task = node.querySelector('p');
+  console.log(cb);
+  if (cb.checked === true){
+    console.log('checked');
+    task.className = "grayout";
+  }
+} 
+
 
 AddToDo();
