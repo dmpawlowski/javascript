@@ -21,9 +21,7 @@ function CreateToDo(){
 
 function Checkbox(){
   var cb = document.getElementsByClassName('checkbox');
-  console.log("cb lenght = " + cb.length);
   for (i = 1; i <= cb.length; i ++){
-    console.log("i = " + i);
     cb[i-1].addEventListener('click', CompleteToDo);
   }
 }
@@ -31,12 +29,14 @@ function Checkbox(){
 function CompleteToDo(e){
   var cb = e.target;
   var node = cb.parentNode;
-  console.log('parent' + node);
   var task = node.querySelector('p');
-  console.log(cb);
-  if (cb.checked === true){
-    console.log('checked');
+  if (task.className.match("grayout")){
+    console.log("matched");
+    task.className = "";
+  } 
+  else{
     task.className = "grayout";
+    console.log("didnt match");
   }
 } 
 
