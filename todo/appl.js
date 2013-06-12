@@ -5,18 +5,18 @@ function AddTask(){
 
 function CreateTask(){
   var input = document.getElementById('input');
+  var ul = document.getElementById('list');
   var li = document.createElement('li');
   var p = document.createElement('p');
+  var content = document.createTextNode(input.value);
   var checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
   checkbox.className = 'checkbox';
-  var content = document.createTextNode(input.value);
-  var ul = document.getElementById('list');
 
+  ul.appendChild(li);
   li.appendChild(checkbox);
   li.appendChild(p);
   p.appendChild(content)
-  ul.appendChild(li);
   CheckboxListener();
 }
 
