@@ -17,10 +17,10 @@ function CreateTask(){
   li.appendChild(p);
   p.appendChild(content)
   ul.appendChild(li);
-  Checkbox();
+  CheckboxListener();
 }
 
-function Checkbox(){
+function CheckboxListener(){
   var cb = document.getElementsByClassName('checkbox');
   for (i = 1; i <= cb.length; i ++){
     cb[i-1].addEventListener('click', CompleteTask);
@@ -31,12 +31,7 @@ function CompleteTask(e){
   var cb = e.target;
   var node = cb.parentNode;
   var task = node.querySelector('p');
-  if (task.className.match("grayout")){
-    task.className = "";
-  } 
-  else{
-    task.className = "grayout";
-  }
+  task.classList.toggle('grayout');
 } 
 
 
