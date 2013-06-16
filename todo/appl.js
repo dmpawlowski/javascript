@@ -1,16 +1,20 @@
 function AddTask(){
-  //Add event listener to Add Task Button
+  var input = document.getElementById('input');
+  input.onkeypress = function(e){
+    if (e.keyCode === 13){
+      CreateTaskElements();
+    }
+  };
   var button = document.getElementById('button');
-  button.addEventListener('click', CreateTask);
+  button.addEventListener('click', CreateTaskElements);
 }
 
-function CreateTask(){
-  //Create html elements and add them to the dom
+function CreateTaskElements(){
   var input = document.getElementById('input');
+  var taskContent = document.createTextNode(input.value);
   var ul = document.getElementById('list');
   var li = document.createElement('li');
   var p = document.createElement('p');
-  var content = document.createTextNode(input.value);
   var checkbox = document.createElement('input');
   checkbox.type = 'checkbox';
   checkbox.className = 'checkbox';
@@ -18,24 +22,26 @@ function CreateTask(){
   ul.appendChild(li);
   li.appendChild(checkbox);
   li.appendChild(p);
-  p.appendChild(content)
+  p.appendChild(taskContent)
   CheckboxListener();
 }
 
 function CheckboxListener(){
-  //add even listener to newly created checkboxes
-  var cb = document.getElementsByClassName('checkbox');
-  for (i = 1; i <= cb.length; i ++){
-    cb[i-1].addEventListener('click', CompleteTask);
+  var chbx = document.getElementsByClassName('checkbox');
+  for (i = 1; i <= chbx.length; i ++){
+    chbx[i-1].addEventListener('click', CompletedTaskStyle);
   }
 }
 
-function CompleteTask(e){
-  //toggle gray out of task when checkbox is clicked
-  var cb = e.target;
-  var node = cb.parentNode;
-  var task = node.querySelector('p');
+function CompletedTaskStyle(evt){
+  var chbx = evt.target;
+  var liNode = chbx.parentNode;
+  var ulNode = liNode.parentNode;
+  var task = liNode.querySelector('p');
   task.classList.toggle('grayout');
+  if (task.className === 'grayout'){
+    liNode = ulNode.appendChild(liNode);
+  };
 } 
 
 
