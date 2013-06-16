@@ -27,10 +27,12 @@ function CreateTaskElements(){
 }
 
 function CheckboxListener(){
-  var chbx = document.getElementsByClassName('checkbox');
-  for (i = 1; i <= chbx.length; i ++){
-    chbx[i-1].addEventListener('click', CompletedTaskStyle);
-  }
+  var ulNode = document.getElementById('list');
+  ulNode.addEventListener('click', function(evt){
+    if (evt.target && evt.target.nodeName === "INPUT"){
+      CompletedTaskStyle(evt);
+    }
+  });
 }
 
 function CompletedTaskStyle(evt){
