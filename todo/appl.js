@@ -23,7 +23,7 @@ function CreateTaskElements(){
   li.appendChild(checkbox);
   li.appendChild(p);
   p.appendChild(taskContent)
-  CheckboxListener();
+  input.value = null;
 }
 
 function CheckboxListener(){
@@ -48,3 +48,4 @@ function CompletedTaskStyle(evt){
 
 
 AddTask();
+CheckboxListener();
