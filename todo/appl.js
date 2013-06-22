@@ -46,6 +46,19 @@ function CompletedTaskStyle(evt){
   };
 } 
 
+function HandlebarTry(){
+  var name = document.getElementById('name');
+  var input = document.getElementById('input');
+  console.log(input);
+  console.log(name);
+  var profileName = {
+    name : "Donny"
+  };
+  var source = name.innerHTML;
+  var template = Handlebars.compile(source);
+
+}
 
 AddTask();
 CheckboxListener();
+HandlebarTry();
