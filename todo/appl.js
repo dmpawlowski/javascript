@@ -48,6 +48,7 @@ function CompletedTaskStyle(evt){
 
 function HandlebarTry(){
   var name = document.getElementById('name');
+  var replace = document.getElementById('replace');
   console.log(name);
   var profileName = {
     name : "Donny"
@@ -55,6 +56,7 @@ function HandlebarTry(){
   var source = name.innerHTML;
   console.log(source);
   var template = Handlebars.compile(source);
+  replace.innerHTML = template(profileName);
 
 }
 
