@@ -24,6 +24,17 @@ function CreateTaskElements(){
   li.appendChild(p);
   p.appendChild(taskContent)
   input.value = null;
+
+  var inputTask = {
+    task : taskContent
+  };
+  console.log(taskContent);
+  console.log(inputTask);
+  var taskList = document.getElementById('taskList');
+  var source = taskList.innerHTML;
+  var template = Handlebars.compile(source);
+  replace.innerHTML = template(inputTask);
+
 }
 
 function CheckboxListener(){
@@ -62,4 +73,4 @@ function HandlebarTry(){
 
 AddTask();
 CheckboxListener();
-HandlebarTry();
+//HandlebarTry();
