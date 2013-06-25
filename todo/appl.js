@@ -23,10 +23,12 @@ function CreateTaskElements(){
   li.appendChild(checkbox);
   li.appendChild(p);
   p.appendChild(taskContent)
-  input.value = null;
+  //input.value = null;
+  console.log(input)
+  var taskString = input.value;
 
   var inputTask = {
-    task : taskContent
+    task : taskString
   };
   console.log(taskContent);
   console.log(inputTask);
