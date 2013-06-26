@@ -9,25 +9,28 @@ function AddTask(){
   button.addEventListener('click', CreateTaskElements);
 }
 
-function CreateTaskElements(){
-  var input = document.getElementById('input');
-  var taskContent = document.createTextNode(input.value);
-  var ul = document.getElementById('list');
-  var li = document.createElement('li');
-  var p = document.createElement('p');
-  var checkbox = document.createElement('input');
-  checkbox.type = 'checkbox';
-  checkbox.className = 'checkbox';
+var tasks = [];
 
-  ul.appendChild(li);
-  li.appendChild(checkbox);
-  li.appendChild(p);
-  p.appendChild(taskContent)
+function CreateTaskElements(){
+  var taskString = input.value;
+  //how does the above line work? input isn't defined
+  var inputTask = {
+    task : taskString
+  };
+  tasks.push(inputTask);
+  var context = {
+    tasks : tasks
+  }
+  var taskList = document.getElementById('taskList');
+  var source = taskList.innerHTML;
+  var template = Handlebars.compile(source);
+  //var replace = document.getElementById("replace");
+  replace.innerHTML = template(context);
   input.value = null;
 }
 
 function CheckboxListener(){
-  var ulNode = document.getElementById('list');
+  var ulNode = document.getElementById('replace');
   ulNode.addEventListener('click', function(evt){
     if (evt.target && evt.target.nodeName === "INPUT"){
       CompletedTaskStyle(evt);

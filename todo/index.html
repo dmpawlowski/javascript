@@ -3,6 +3,8 @@
   <head>
     <title>To Do</title>
     <link href="style.css" type="text/css" rel="stylesheet" />
+    <script src="assets/handlebars.js"></script>
+    {{load "_templates.html"}}
   </head>
   <body>
     <header>
@@ -11,7 +13,7 @@
     <article>
       <input id="input" type="text" autofocus="true" />
       <button id="button">Add Task</button>
-      <ul id="list">
+      <ul id='replace' >
       </ul>
     </article>
     <script src="appl.js"></script>
