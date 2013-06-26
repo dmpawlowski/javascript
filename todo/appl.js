@@ -27,6 +27,7 @@ function CreateTaskElements(){
   //var replace = document.getElementById("replace");
   replace.innerHTML = template(context);
   input.value = null;
+  localStorage.setItem('context', JSON.stringify(context));
 }
 
 function CheckboxListener(){
@@ -49,6 +50,15 @@ function CompletedTaskStyle(evt){
   };
 } 
 
+function RestoreSession(){
+  if (localStorage.getItem('context') === null){
+  }
+  else {
+    console.log('local storage!');
+  }
+}
 
+
+RestoreSession();
 AddTask();
 CheckboxListener();
