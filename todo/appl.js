@@ -21,10 +21,6 @@ function CreateTaskElements(){
   checkbox.type = 'checkbox';
   checkbox.className = 'checkbox';
 
-  ul.appendChild(li);
-  li.appendChild(checkbox);
-  li.appendChild(p);
-  p.appendChild(taskContent)
   //input.value = null;
   var taskString = input.value;
   
@@ -46,7 +42,7 @@ function CreateTaskElements(){
 }
 
 function CheckboxListener(){
-  var ulNode = document.getElementById('list');
+  var ulNode = document.getElementById('replace');
   ulNode.addEventListener('click', function(evt){
     if (evt.target && evt.target.nodeName === "INPUT"){
       CompletedTaskStyle(evt);
