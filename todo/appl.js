@@ -9,6 +9,8 @@ function AddTask(){
   button.addEventListener('click', CreateTaskElements);
 }
 
+var tasks = [];
+
 function CreateTaskElements(){
   var input = document.getElementById('input');
   var taskContent = document.createTextNode(input.value);
@@ -24,18 +26,22 @@ function CreateTaskElements(){
   li.appendChild(p);
   p.appendChild(taskContent)
   //input.value = null;
-  console.log(input)
   var taskString = input.value;
-
+  
   var inputTask = {
     task : taskString
   };
+  tasks.push(inputTask);
+  var context = {
+    tasks : tasks
+  }
   console.log(taskContent);
   console.log(inputTask);
   var taskList = document.getElementById('taskList');
   var source = taskList.innerHTML;
   var template = Handlebars.compile(source);
-  replace.innerHTML = template(inputTask);
+  var replace = document.getElementById("replace");
+  replace.innerHTML = template(context);
 
 }
 
