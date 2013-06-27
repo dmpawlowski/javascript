@@ -55,6 +55,13 @@ function RestoreSession(){
   }
   else {
     console.log('local storage!');
+    var stored = localStorage.getItem('context');
+    var convertedStored = JSON.parse(stored);
+    var taskList = document.getElementById('taskList');
+    var source = taskList.innerHTML;
+    var template = Handlebars.compile(source);
+    var replace = document.getElementById("replace");
+    replace.innerHTML = template(convertedStored);
   }
 }
 
