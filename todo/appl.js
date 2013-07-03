@@ -11,24 +11,31 @@ function AddTask(){
 
 var tasks = [];
 
-function CreateTaskElements(){
+function CreateTaskElements(evt){
   var taskString = input.value;
   //how does the above line work? input isn't defined
+  var checkedState = false;
   var inputTask = {
-    task : taskString
-      //state (imcomplete vs complete) (css)
+    task : taskString,
+    state : checkedState 
   };
   tasks.push(inputTask);
+  if (taskString !== "") {
+    DisplayTaskElements();
+  }
+}
+
+function DisplayTaskElements(){
   var context = {
     tasks : tasks
   }
   var taskList = document.getElementById('taskList');
   var source = taskList.innerHTML;
   var template = Handlebars.compile(source);
-  //var replace = document.getElementById("replace");
+  var replace = document.getElementById("replace");
   replace.innerHTML = template(context);
   input.value = null;
-  localStorage.setItem('context', JSON.stringify(context));
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 function CheckboxListener(){
@@ -50,24 +57,28 @@ function CompletedTaskStyle(evt){
   var liNode = chbx.parentNode;
   var ulNode = liNode.parentNode;
   var task = liNode.querySelector('p');
-  task.classList.toggle('grayout');
+  for(var i = 0; i < tasks.length; i++){
+    if (tasks[i].task === task.innerHTML){
+      console.log('yay!' + i);
+      task.classList.toggle('grayout');
+      tasks[i].state = !tasks[i].state;
+      console.log(tasks[i].state);
+    }
+  }
   if (task.className === 'grayout'){
     liNode = ulNode.appendChild(liNode);
   };
 } 
 
 function RestoreSession(){
-  if (localStorage.getItem('context') === null){
+  if (localStorage.getItem('tasks') === null){
   }
   else {
     console.log('local storage!');
-    var stored = localStorage.getItem('context');
+    var stored = localStorage.getItem('tasks');
     var convertedStored = JSON.parse(stored);
-    var taskList = document.getElementById('taskList');
-    var source = taskList.innerHTML;
-    var template = Handlebars.compile(source);
-    var replace = document.getElementById("replace");
-    replace.innerHTML = template(convertedStored);
+    tasks = convertedStored;
+    DisplayTaskElements();
   }
 }
 
