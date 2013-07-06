@@ -50,6 +50,15 @@ function CheckboxListener(){
       CompletedTaskStyle(evt);
     }
   });
+  ulNode.addEventListener('dragstart', function(evt){
+    if (evt.target && evt.target.nodeName === "LI"){
+      DragEvent(evt);
+    }
+  });
+}
+
+function DragEvent(evt){
+  evt.srcElement.style.opacity = '0.4';
 }
 
 function CompletedTaskStyle(evt){

@@ -5,6 +5,7 @@ p {
 
 li {
   list-style-type: none;
+  cursor: move;
 }
 
 .grayout {
