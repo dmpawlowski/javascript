@@ -68,6 +68,7 @@ function CompletedTaskStyle(evt){
   if (task.className === 'grayout'){
     liNode = ulNode.appendChild(liNode);
   };
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 } 
 
 function RestoreSession(){
@@ -83,15 +84,34 @@ function RestoreSession(){
 }
 
 function EditTask(evt){
-  console.log('edit!');
   var oldElement = evt.srcElement;
   var oldText = evt.srcElement.innerHTML;
-  var input = document.createElement("input");
-  input.value = oldText;
-  input.type = "text";
-  console.log(oldElement);
-  console.log(oldElement.parentNode);
-  oldElement.parentNode.replaceChild(input, oldElement);
+  var context = {
+    oldText : oldText
+  }
+  var edit = document.getElementById('edit');
+  var source = edit.innerHTML;
+  var template = Handlebars.compile(source);
+  var replace = oldElement;
+  replace.innerHTML = template(context);
+  var saveBtn = document.getElementById('save');
+  saveBtn.addEventListener('click', function(){
+    replaceText = document.getElementById('editInput').value;
+    console.log(replaceText);
+    for(var i = 0; i < tasks.length; i++){
+      if (tasks[i].task === oldText){
+        console.log('found task');
+        console.log('tasks before' + tasks[i].task);
+        tasks[i].task = replaceText;
+        console.log('tasks after' + tasks[i].task);
+        DisplayTaskElements();
+      }
+    }
+  });
+  var discardBtn = document.getElementById('discard');
+  discardBtn.addEventListener('click', function(){
+    DisplayTaskElements();
+  });
 }
 
 RestoreSession();

@@ -1,9 +1,14 @@
 <script type="text/x-handlebars" id="taskList">
   {{#each tasks}}
   <li>
-  <input type="checkbox" class="checkbox" />
-  <p>{{task}}</p>
+    <input type="checkbox" class="checkbox" />
+    <p>{{task}}</p>
   </li>
   {{/each}}
 </script>
 
+<script type="text/x-handlebars" id="edit">
+  <input id="editInput" type="text" value={{oldText}} />
+  <button id="save">Save</button>
+  <button id="discard">Discard</button>
+</script>
